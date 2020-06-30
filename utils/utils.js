@@ -23,10 +23,11 @@ function Utils(errorOutputId) { // eslint-disable-line no-unused-vars
       }
       else {
         // WASM
-        cv['onRuntimeInitialized'] = () => {
+        cv.then(c => {
+          cv = c;
           console.log(cv.getBuildInformation());
           onloadCallback();
-        }
+        });
       }
     });
     script.addEventListener('error', () => {
